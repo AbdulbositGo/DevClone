@@ -9,7 +9,8 @@ from tag.models import Tag
 
 class TagsView(View):
     def get(self, request):
+        tags = Tag.objects.all()
         context = {
-            'tags': Tag.objects.all()
+            'tags': tags
         }
         return render(request, 'tags.html', context)
