@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block title %}crate-a-post{% endblock %}
+
+{% block content %}
+    <div class="lg:w-8/12 m-auto mt-6 mb-12 dark:bg-gray-900">
+        <div class="mt-5 md:col-span-2 dark:bg-gray-900 md:mt-0">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="shadow bg-white sm:overflow-hidden sm:rounded-md">
+                    <div class="dark:bg-gray-800 space-y-6 bg-white px-4 py-5 sm:p-6">
+                        <div>
+                            <label class="block text-sm mb-2 font-medium text-gray-900 dark:text-white" for="id_image">Post image</label>
+                            <div class="flex items-center justify-center w-full">
+                                <label for="id_image" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+                                    </div>
+                                    {{ form.image }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="title" class="dark:text-white mb-3 block text-sm font-medium text-gray-700">Post Title</label>
+                            {{ form.title }}
+                        </div>
+                        <div>
+                            <label for="tags" class="w-full dark:text-white mb-3 block text-sm font-medium text-gray-700">Post Tags
+                                <a href="http://127.0.0.1:8000/admin/tag/tag/add/" class="inline text-white hover:text-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center mr-2  dark:hover:text-blue-700 dark:focus:ring-blue-800">+
+                                </a>
+                            </label>
+                            {{ form.tags }}
+                            {% for foo in form.tags.option %}
+                                    {{ foo }}
+                            {% endfor %}
+
+                        </div>
+                        <div class="mt-5">
+                          <label for="content" class="dark:text-white mb-3 block text-sm font-medium text-gray-700">Post Content</label>
+                          <div class="mt-1">
+                            {{ form.content }}
+                          </div>
+                        </div>
+                    </div>
+                    <div class="px-4  py-3 text-right sm:px-6">
+                        <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
