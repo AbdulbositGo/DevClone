@@ -38,7 +38,7 @@ Tags
                   <div class="h-4 bg-{{ tag.get_color_display }}-500 rounded-t-lg w-full">
                   </div>
                   <div class="p-3">
-                      <a href="" class="text-xl p-2 font-bold dark:text-white hover:bg-{{ tag.get_color_display }}-200 hover:rounded">#{{ tag.name }}</a>
+                      <a href="{% url 'tag' tag.pk %}" class="text-xl p-2 font-bold dark:text-white hover:bg-{{ tag.get_color_display }}-200 hover:rounded">#{{ tag.name }}</a>
                       <p class="my-2 text-gray-500 dark:text-gray-400">Plan it, create it, launch it. Collaborate seamlessly with all  the organization and hit your marketing goals every month with our marketing plan.</p>
                       <a type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-{{ tag.get_color_display }}-200 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-{{ tag.get_color_display }}-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Follow</a>
                   </div>

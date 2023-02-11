@@ -64,7 +64,7 @@
                                 <div class="">
                                     <div class="flex items-center">
                                         <div class="flex items-center">
-                                            <img class="object-cover h-10 w-10 rounded-full" src="{% if post.profile.image %}{{ post.profile.image.url }}{% else %}{% static 'user.jpg' %}{% endif %}" alt="Avatar">
+                                            <img class="object-cover h-10 w-10 rounded-full" src="{{ post.profile.image.url }}" alt="Avatar">
                                             <a href="{% url 'profile' post.profile.username %}" class="mx-2 font-semibold text-gray-700 dark:text-gray-200" tabindex="0" role="link">{{ post.profile.username }}</a>
                                         </div>
                                         <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">{{ post.created|timesince }} ago</span>
