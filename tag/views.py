@@ -9,8 +9,10 @@ from tag.models import Tag
 
 class TagsView(View):
     def get(self, request):
-        tags = Tag.objects.all()
+        tag = request.GET.get('tag') if request.GET.get('tag') else ""
+        tags = Tag.objects.filter(name__icontains=tag)
         context = {
-            'tags': tags
+            'tags': tags,
+            'tag': tag
         }
         return render(request, 'tags.html', context)
