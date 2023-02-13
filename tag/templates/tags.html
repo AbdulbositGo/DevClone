@@ -6,9 +6,8 @@ Tags
 
 {% block content %}
 <section class="dark:bg-gray-900">
-  <div class="py-4 px-4 mx-auto max-w-screen-xl">
-
-      <div class="my-4 flex justify-between">
+  <div class="py-4 mx-auto max-w-screen-xl">
+      <div class="mb-4 flex justify-between">
           <div>
             <h2 class="text-4xl font-extrabold dark:text-white">TAGS</h2>
           </div>
@@ -28,19 +27,23 @@ Tags
             </form>
           </div>
           <div>
-            <a type="button" class="text-gray-900 border border-gray-300 focus:outline-none hover:bg-white focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Following tags</a>
+            <a type="button" class="text-gray-900 border border-gray-300 focus:outline-none hover:bg-white focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Following tags</a>
           </div>
 
       </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
           {% for tag in tags %}
-              <div class="rounded-lg h-56 bg-white">
+              <div class="rounded-lg h-60 bg-white">
                   <div class="h-4 bg-{{ tag.get_color_display }}-500 rounded-t-lg w-full">
                   </div>
                   <div class="p-3">
-                      <a href="{% url 'tag' tag.pk %}" class="text-xl p-2 font-bold dark:text-white hover:bg-{{ tag.get_color_display }}-200 hover:rounded">#{{ tag.name }}</a>
-                      <p class="my-2 text-gray-500 dark:text-gray-400">Plan it, create it, launch it. Collaborate seamlessly with all  the organization and hit your marketing goals every month with our marketing plan.</p>
-                      <a type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-{{ tag.get_color_display }}-200 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-{{ tag.get_color_display }}-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Follow</a>
+                      <a href="{% url 'tag' tag.pk %}" class="text-xl p-2 my-2 font-bold dark:text-white hover:bg-{{ tag.get_color_display }}-200 hover:rounded">#{{ tag.name }}</a>
+                      {% if tag.description %}
+                          <p class="my-2 m text-gray-500 dark:text-gray-400">{{ tag.description }}</p>
+                      {% endif %}
+                  <div class="mt-4">
+                      <a href="" class="text-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-{{ tag.get_color_display }}-200 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-{{ tag.get_color_display }}-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Follow</a>
+                  </div>
                   </div>
               </div>
           {% endfor %}

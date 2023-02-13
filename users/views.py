@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import login, logout
 from django.views import View
 
+from post.models import Post
 from .forms import (
     ProfileModelForm, WorkModelForm, CodingModelForm,
     BasicModelForm, RegistrationForm, LoginForm
@@ -65,9 +66,13 @@ class LogoutView(LoginRequiredMixin, View):
 class ProfileView(View):
     def get(self, request, username):
         profile = get_object_or_404(Profile, username=username)
+        posts = profile.post_set.all()
+        comments = profile.comment_set.all()
         if profile:
             context = {
-                'profile': profile
+                'profile': profile,
+                'posts': posts,
+                'comments': comments,
             }
             return render(request, 'profile.html', context)
         return redirect(reverse('home'))
