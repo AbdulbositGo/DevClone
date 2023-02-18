@@ -1,10 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import reverse, render, redirect, get_object_or_404
+from django.shortcuts import reverse, render, redirect
 from django.views import View
 
 from tag.models import Tag, FollowingTags
 from post.models import Post
-from users.models import Profile
 
 
 # Create your views here.
@@ -29,16 +28,19 @@ class TagView(View):
         tag = Tag.objects.filter(pk=pk).first()
         if not tag:
             return redirect('tags')
-        related_posts = Post.objects.filter(tags=tag)
 
+        related_posts = Post.objects.filter(tags=tag)
+        following_tags = request.user.following_tags.all()
+        following_tags_ids = [tag.tag.id for tag in following_tags]
         context = {
             'tag': tag,
             'related_posts': related_posts,
+            'following_tags_ids': following_tags_ids,
         }
         return render(request, 'tag.html', context)
 
 
-class FollowingTagView(View):
+class FollowingTagView(View, LoginRequiredMixin):
     def get(self, request, pk):
         tag = Tag.objects.get(pk=pk)
         if not tag:
@@ -48,4 +50,4 @@ class FollowingTagView(View):
             follow_obj.delete()
         else:
             FollowingTags.objects.create(profile=request.user, tag=tag)
-        return redirect(reverse('tags'))
+        return redirect(reverse('tag', kwargs={'pk': tag.id}))
