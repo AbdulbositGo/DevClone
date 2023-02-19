@@ -108,8 +108,3 @@ class SettingsView(LoginRequiredMixin, View):
                 form.save()
 
         return redirect('settings')
-
-
-class DashboardView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, 'dashboard.html')
