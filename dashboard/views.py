@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from django.views import View
 
+from post.models import Post
+
 
 # Create your views here.
 
 
 class DashboardPostsView(View):
     def get(self, request):
-        return render(request, 'dashboard/posts.html')
+        posts = Post.objects.filter(profile=request.user)
+        context = {
+            'posts': posts
+        }
+        return render(request, 'dashboard/posts.html', context)
 
 
 class DashboardFollowingTagsView(View):

@@ -1,17 +1,12 @@
 {% extends 'dashboard/dashboard_base.html' %}
 {% load static %}
 
-{% block post-card %}
-    {% include 'dashboard/post-cards.html' %}
-{% endblock %}
-
 {% block dashboard-titl %}
 Reading List
 {% endblock %}
 
 {% block dashboard %}
     <div class="rounded-lg xl:col-span-7 2xl:col-span-7 dark:bg-gray-900">
-        <p class="text-xl font-bold dark:text-white">Post</p>
         <div class="p-6 m:p-9 bg-white rounded-lg">
             {% if posts %}
                 {% for post in posts %}
@@ -42,9 +37,9 @@ Reading List
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="flex flex-col items-center h-100">
+                <div class="flex flex-col mb-6 items-center h-100">
                     <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--XHE_XeFn--/c_imagga_scale,f_auto,fl_progressive,q_auto,w_300/https://dev-to-uploads.s3.amazonaws.com/i/y5767q6brm62skiyywvc.png" alt="no-post">
-                    <p class="mb-6">This is where you can manage your posts, but you haven't written anything yet.</p>
+                    <h2 class="fw-bold fs-l">Your reading list is empty</h2>
                 </div>
             {% endif %}
         </div>
