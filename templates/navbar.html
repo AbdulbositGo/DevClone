@@ -106,7 +106,7 @@
                           <a href="{% url 'profile' request.user.username %}" class="font-semibold block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:underline hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">{% if request.user.first_name %}{{ request.user.first_name }}<br/>{% endif %}@{{ request.user.username }}</a>
                           <ul class="py-1 font-medium" aria-labelledby="user-menu-button">
                               <li>
-                                  <a href="{% url 'dashboard' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                                  <a href="{% url 'dashboard:posts' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
                               </li>
                               <li>
                                   <a href="{% url 'new-post' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">Create post</a>

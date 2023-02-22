@@ -6,13 +6,15 @@
     <div class="dark:bg-zinc-800 max-w-5xl mx-auto pb-1 mb-4 rounded-xl">
         <div class="my-2">
             <div class=" flex flex-wrap justify-start">
-                <p class="text-3xl font-bold dark:text-white">Dashboard</p>
+                <p class="text-3xl font-bold dark:text-white">Dashboard » {% block dashboard-titl %}{% endblock %}</p>
             </div>
-            {% include 'post-cards.html' %}
+            {% block post-card %}
+
+            {% endblock %}
         </div>
     </div>
     <div class="grid max-w-5xl mx-auto grid-cols-1 xl:grid-cols-9 2xl:grid-cols-9 gap-4">
-        {% include 'dashboard-sidebar.html' %}
+        {% include 'dashboard/dashboard-sidebar.html' %}
         {% block dashboard %}
         
         {% endblock %}
