@@ -46,6 +46,7 @@ class PostView(View):
         else:
             return redirect('login')
 
+
 class CreatePostView(LoginRequiredMixin, View):
     def get(self, request):
         form = PostModelForm()
