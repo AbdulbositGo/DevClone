@@ -108,3 +108,5 @@ class SettingsView(LoginRequiredMixin, View):
                 form.save()
 
         return redirect('settings')
+
+

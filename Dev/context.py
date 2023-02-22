@@ -6,5 +6,7 @@ def dashboard_count_info(request):
     context = {
         'post_count': Post.objects.filter(profile=request.user).count(),
         'following_tag_count': FollowingTags.objects.filter(profile=request.user).count(),
+        'following_count': Follow.objects.filter(profile=request.user).count(),
+        'follower_count': Follow.objects.filter(profile=request.user).count(),
     }
     return context

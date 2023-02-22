@@ -49,6 +49,17 @@ class Work(models.Model):
         return f"{self.profile}'s work"
 
 
+class Follow(models.Model):
+    follower = models.ForeignKey(Profile, related_name='following', on_delete=models.CASCADE)
+    following = models.ForeignKey(Profile, related_name='followers', on_delete=models.CASCADE)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.follower} follows {self.following}"
+
+
 @receiver(post_save, sender=Profile)
 def create_user_profile_basic(sender, instance, created, *args, **kwargs):
     if created:

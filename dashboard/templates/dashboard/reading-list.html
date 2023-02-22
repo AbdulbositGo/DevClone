@@ -7,7 +7,7 @@ Reading List
 
 {% block dashboard %}
     <div class="rounded-lg xl:col-span-7 2xl:col-span-7 dark:bg-gray-900">
-        <div class="p-6 m:p-9 bg-white rounded-lg">
+        <div class="pb-6 bg-white rounded-lg">
             {% if posts %}
                 {% for post in posts %}
                     <div class="max-w-full bg-white overflow-hidden mb-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -39,7 +39,7 @@ Reading List
             {% else %}
                 <div class="flex flex-col mb-6 items-center h-100">
                     <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--XHE_XeFn--/c_imagga_scale,f_auto,fl_progressive,q_auto,w_300/https://dev-to-uploads.s3.amazonaws.com/i/y5767q6brm62skiyywvc.png" alt="no-post">
-                    <h2 class="fw-bold fs-l">Your reading list is empty</h2>
+                    <h2 class="mb-6 fw-bold fs-l">Your reading list is empty</h2>
                 </div>
             {% endif %}
         </div>

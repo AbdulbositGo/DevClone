@@ -50,4 +50,4 @@ class FollowingTagView(View, LoginRequiredMixin):
             follow_obj.delete()
         else:
             FollowingTags.objects.create(profile=request.user, tag=tag)
-        return redirect(reverse('tag', kwargs={'pk': tag.id}))
+        return redirect(reverse('tags'))
