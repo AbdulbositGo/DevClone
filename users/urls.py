@@ -1,6 +1,8 @@
 from django.urls import path
 
-from .views import RegisterView, LoginView, LogoutView, ProfileView, SettingsView
+from .views import (
+    RegisterView, LoginView, LogoutView, ProfileView, SettingsView, FollowToggle
+)
 
 
 urlpatterns = [
@@ -9,4 +11,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('settings/', SettingsView.as_view(), name='settings'),
     path('<str:username>/', ProfileView.as_view(), name='profile'),
+    path('follow/<int:iserid>/', FollowToggle.as_view(), name='follow_toggle'),
 ]

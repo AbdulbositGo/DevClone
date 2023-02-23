@@ -3,40 +3,54 @@
 {% block title %}Profile: {{ profile.username }}{% endblock %}
 
 {% block content %}
-    <div class="dark:bg-zinc-800 max-w-3xl mx-auto md:max-w-3xl pb-1 mt-10 bg-white mb-4 rounded-xl mt-20">
-        <div class="flex flex-wrap justify-center">
-            <div class="w-full h-20 rounded-t-xl bg-gray-500 flex justify-center">
-                <div class="relative">
-                    <img src="{{ profile.image.url }}" class="shadow-xl object-cover rounded-full align-middle absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]" alt="profile-image"/>
+    <div class="max-w-3xl m-auto bg-white rounded-lg my-4 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex justify-end px-2 pt-2">
+            {% if request.user != profile %}
+                <form action="{% url 'follow_toggle' profile.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="inline-flex items-center px-4 py-2 mr-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">follow</button>
+                </form>
+                <button id="dropdownProfileButton" data-dropdown-toggle="dropdownDots" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+                    <span class="sr-only">Open dropdown</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                </button>
+                <div id="dropdownDots" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                     <ul class="py-1 font-medium" aria-labelledby="user-menu-button">
+                         <li>
+                             <a href="{% url 'dashboard:posts' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                         </li>
+                         <li>
+                             <a href="{% url 'new-post' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-glue-20 dark:text-gray-200 dark:hover:text-white">Create post</a>
+                         </li>
+                         <li>
+                             <a href="{% url 'settings' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-blue-200 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                         </li>
+                         <li>
+                             <a href="{% url 'logout' %}" class="border-t block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 hover:rounded dark:hover:bg-blue-200 dark:text-gray-200 dark:hover:text-white">Log out</a>
+                         </li>
+                     </ul>
                 </div>
-            </div>
-            <div class="w-full font-bold text-center">
-                <span class="text-2xl text-slate-800">{{ profile.username }}</span>
-            </div>
-            <div class="w-full font-bold text-center">
-                <div class="flex justify-center lg:pt-4 pt-6 pb-0">
-                    <div class="p-3 text-center">
-                        <span class="text-xl block uppercase tracking-wide text-slate-600">{{ posts.count }}</span>
-                        <span class="text-sm text-slate-800">Posts</span>
-                    </div>
-                    <div class="p-3 text-center">
-                        <span class="text-xl block uppercase tracking-wide text-slate-600">2,454</span>
-                        <span class="text-sm text-slate-800">Followers</span>
-                    </div>
-                    <div class="p-3 text-center">
-                        <span class="text-xl  block uppercase tracking-wide text-slate-600">564</span>
-                        <span class="text-sm text-slate-800">Following</span>
-                    </div>
-                </div>
+            {% else %}
+                <a href="{% url 'settings' %}" class="inline-flex items-center px-4 py-2 mr-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edite profile</a>
+            {% endif %}
+        </div>
+        <div class="flex flex-col items-center mb-4">
+            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ profile.image.url }}" alt="Bonnie image"/>
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">@{{ profile.username }}</h5>
+            {% if profile.first_name %}
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ profile.first_name }}</span>
+            {% endif %}
+
+            <div class="flex mt-2 space-x-4 md:mt-2">
+                <p class="text-md font-medium text-gray-900 dark:text-white">{{ profile.followers.count }} followers</p>
+                <p class="text-md font-medium text-gray-900 dark:text-white">{{ profile.following.count }} following</p>
             </div>
         </div>
         <div class="text-center font-bold">
-            {% if profile.first_name %}
-                <h3 class="text-4xl text-slate-900 leading-normal mb-1">{{ profile.first_name }}</h3>
-            {% endif %}
-            {% if profile.bio %}
-                <div class="text-xs mt-0 mb-2 text-slate-400">
-                    <i class="fas fa-map-marker-alt mr-2 text-slate-600"></i>{{ profile.basic.bio }}
+            {% if profile.basic.bio %}
+                <div class="text-xs mt-0 mb-2 text-slate-400 w-fill px-4">
+                    <p class="mr-2 text-slate-400">Bio</p>
+                    <p class="mr-2 text-slate-500">{{ profile.basic.bio }}</p>
                 </div>
             {% endif %}
             <div class="py-2 mb-4 border-slate-200 text-center">
@@ -81,25 +95,25 @@
                 </div>
             </div>
         </div>
-        {% if profile.work.work and profile.work.education %}
-            <div class="py-6 border-t border-slate-200 text-center">
-            <div class="w-full font-bold text-center">
-                <div class="flex flex-wrap justify-around">
-                    {% if profile.work.work %}
-                        <div class="p-3 text-center">
-                            <span class="text-md block uppercase tracking-wide text-slate-600">{{ profile.work.work }}</span>
-                            <span class="text-sm text-slate-800">Work</span>
-                        </div>
-                    {% endif %}
-                    {% if profile.work.education %}
-                        <div class="p-3 text-center">
-                            <span class="text-md block uppercase tracking-wide text-slate-600">{{ profile.work.education }}</span>
-                            <span class="text-sm text-slate-800">Education</span>
-                        </div>
-                    {% endif %}
+        {% if profile.work.work or profile.work.education %}
+            <div class="border-t border-slate-200 text-center">
+                <div class="w-full font-bold text-center">
+                    <div class="flex flex-wrap justify-around">
+                        {% if profile.work.work %}
+                            <div class="p-3 text-center">
+                                <span class="text-md block uppercase tracking-wide text-slate-600">{{ profile.work.work }}</span>
+                                <span class="text-sm text-slate-800">Work</span>
+                            </div>
+                        {% endif %}
+                        {% if profile.work.education %}
+                            <div class="p-3 text-center">
+                                <span class="text-md block uppercase tracking-wide text-slate-600">{{ profile.work.education }}</span>
+                                <span class="text-sm text-slate-800">Education</span>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
         {% endif %}
     </div>
     <div class="grid max-w-3xl mx-auto grid-cols-1 xl:grid-cols-7 2xl:grid-cols-7 gap-4">

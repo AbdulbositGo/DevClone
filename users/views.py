@@ -9,7 +9,7 @@ from .forms import (
     ProfileModelForm, WorkModelForm, CodingModelForm,
     BasicModelForm, RegistrationForm, LoginForm
 )
-from .models import Profile
+from .models import Profile, Follow
 
 
 class RegisterView(View):
@@ -76,6 +76,22 @@ class ProfileView(View):
             }
             return render(request, 'profile.html', context)
         return redirect(reverse('home'))
+
+
+class FollowToggle(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        user_id = self.kwargs.get('userid')
+        following_user = get_object_or_404(Profile, id=user_id)
+        print(dir(request.user.followers.filter(follower_id=following_user.id)))
+        print(request.user.following.all())
+        if request.followers.filter(follwing=following_user).exists():
+            follow_obj = Follow.objects.get(follower=request.user, following=following_user)
+            follow_obj.delete()
+        else:
+            follow_obj = Follow(follower=request.user, following=following_user)
+            follow_obj.save()
+
+        return redirect('profile', user_id=user_id)
 
 
 class SettingsView(LoginRequiredMixin, View):
