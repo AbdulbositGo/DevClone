@@ -4,162 +4,143 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <main class="pt-8 pb-16 lg:pt-4 lg:pb-24 bg-white-100 dark:text-gray-400 dark:bg-gray-900">
-      <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
-          <article class="bg-white mx-auto rounded-lg w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-              <header class="mb-4 lg:mb-6 not-format">
-                  {% if post.image %}
-                      <img class="h-80 object-cover w-full rounded-lg dark:shadow-gray-700" src="{{ post.image.url }}" alt="image description">
-                  {% endif %}
+     <div class="max-w-5xl grid grid-cols-1 md:grid-cols-12 xl:grid-cols-12 2xl:grid-cols-12 gap-1 mx-auto">
+        <main class="col-span-1 dark:text-gray-400">
+            <div class="sticky top-12 pt-10">
+                <article class="rounded-lg flex flex-col gap-8 items-center dark:format-invert">
+                    <a class="flex flex-col items-center text-gray-900 font-medium dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
+                        <span class="hover:color-blue-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 19" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+                                <path class="hover:text-blue-700" d="M17 11v3h3v2h-3.001L17 19h-2l-.001-3H12v-2h3v-3h2Zm1.243-9.243a6 6 0 0 1 .236 8.235l-1.42-1.418C18.39 7.05 18.32 4.66 16.827 3.17a4.001 4.001 0 0 0-5.49-.153l-1.335 1.198-1.336-1.197a3.999 3.999 0 0 0-5.494.154 4 4 0 0 0-.192 5.451l8.432 8.446L10 18.485 1.52 9.993A6 6 0 0 1 10 1.529a5.998 5.998 0 0 1 8.242.228h.001Z" fill="#dc2626"></path>
+                            </svg>
+                        </span>
+                        <span>9</span>
+                    </a>
+                    <a class="flex  flex-col items-center text-gray-900 font-medium hover:text-gray-900 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
+                        <span class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+                                <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+                            </svg>
+                        </span>
+                        <span>2</span>
+                    </a>
+                    <a class="flex flex-col items-center text-gray-900 font-medium hover:text-gray-900 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
+                        <span class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+                                <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+                            </svg>
+                        </span>
+                        <span>4</span>
+                    </a>
+              </article>
+          </div>
+        </main>
+        <main class="bg-white-100 col-span-8 md:col-span-11 lg:col-span-8 dark:text-gray-400 dark:bg-gray-900">
+          <div class="flex justify-between mx-auto max-w-screen-xl ">
+              <article class="bg-white mx-auto rounded-lg w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                  <header class="mb-4 lg:mb-6 not-format">
+                      {% if post.image %}
+                          <img class="h-80 object-cover w-full rounded-lg dark:shadow-gray-700" src="{{ post.image.url }}" alt="image description">
+                      {% endif %}
+                      <div class="px-8">
+                          <div class="flex items-center space-x-4 my-4">
+                              <div class="flex-shrink-0">
+                                  <img class="w-8 h-8 rounded-full" src="{{ post.profile.image.url }}" alt="Neil image">
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <a href="{% url 'profile' post.profile.username %}  " class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                      {{ post.profile.username }}
+                                  </a>
+                                  <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                      {{ post.created|timesince }} ago
+                                  </p>
+                              </div>
+
+                          </div>
+                          <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-5xl dark:text-white">
+                              {{ post.title }}
+                          </h1>
+                          <div>
+                              {% for tag in post.tags.all %}
+                                  <a href="#" class="font-medium mr-3 text-{{ tag.get_color_display }}-600 dark:text-{{ tag.get_color_display }}-500 hover:underline">{{ tag }}</a>
+                              {% endfor %}
+                          </div>
+                      </div>
+
+                  </header>
+
                   <div class="px-8">
-                      <div class="flex items-center space-x-4 my-4">
-                          <div class="flex-shrink-0">
-                              <img class="w-8 h-8 rounded-full" src="{{ post.profile.image.url }}" alt="Neil image">
+                      <p class="lead">Flow bite is an open-source library of UI components built with the utility-first
+                          classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
+                          date-pickers.</p>
+                      <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
+                          you can think things through before committing to an actual design project.</p>
+                      <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
+                              Flow bite</a>. It comes with the most commonly used UI components, such as buttons, navigation
+                          bars, cards, form elements, and more which are conveniently built with the utility classes from
+                          Tailwind CSS.</p>
+                      <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
+                          <figcaption>Digital art by Anonymous</figcaption>
+                      </figure>
+                      <h2>Getting started with Flow bite</h2>
+                      <p>First of all you need to understand how Flow bite works. This library is not another framework.
+                          Rather, it is a set of components based on Tailwind CSS that you can just copy-paste from the
+                          documentation.</p>
+                      <p>It also includes a JavaScript file that enables interactive components, such as modals, dropdowns,
+                          and date pickers which you can optionally include into your project via CDN or NPM.</p>
+                      <p>You can check out the <a href="https://flowbite.com/docs/getting-started/quickstart/">quickstart
+                              guide</a> to explore the elements by including the CDN files into your project. But if you want
+                          to build a project with Flow bite I recommend you to follow the build tools steps so that you can
+                          purge and minify the generated CSS.</p>
+                      <p>You'll also receive a lot of useful application UI, marketing UI, and e-commerce pages that can help
+                          you get started with your projects even faster. You can check out this <a
+                              href="https://flowbite.com/docs/components/tables/">comparison table</a> to better understand
+                          the differences between the open-source and pro version of Flow bite.</p>
+                      <h2>When does design come in handy?</h2>
+                      <p>While it might seem like extra work at a first glance, here are some key moments in which prototyping
+                          will come in handy:</p>
+                      <ol>
+                          <li><strong>Usability testing</strong>. Does your user know how to exit out of screens? Can they
+                              follow your intended user journey and buy something from the site you’ve designed? By running a
+                              usability test, you’ll be able to see how users will interact with your design once it’s live;
+                          </li>
+                          <li><strong>Involving stakeholders</strong>. Need to check if your GDPR consent boxes are displaying
+                              properly? Pass your prototype to your data protection team, and they can test it for real;</li>
+                          <li><strong>Impressing a client</strong>. Prototypes can help explain or even sell your idea by
+                              providing your client with a hands-on experience;</li>
+                          <li><strong>Communicating your vision</strong>. By using an interactive medium to preview and test
+                              design elements, designers and developers can understand each other — and the project — better.
+                          </li>
+                      </ol>
+                      <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+                      <section class="not-format">
+                          <div class="flex justify-between items-center mb-6">
+                              <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{ post.comment_set.count }})</h2>
                           </div>
-                          <div class="flex-1 min-w-0">
-                              <a href="{% url 'profile' post.profile.username %}  " class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                  {{ post.profile.username }}
-                              </a>
-                              <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                  {{ post.created|timesince }} ago
-                              </p>
-                          </div>
-
-                      </div>
-                      <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-5xl dark:text-white">
-                          {{ post.title }}
-                      </h1>
-                      <div>
-                          {% for tag in post.tags.all %}
-                              <a href="#" class="font-medium mr-3 text-{{ tag.get_color_display }}-600 dark:text-{{ tag.get_color_display }}-500 hover:underline">{{ tag }}</a>
-                          {% endfor %}
-                      </div>
-                  </div>
-
-              </header>
-
-              <div class="px-8">
-                  <p class="lead">Flow bite is an open-source library of UI components built with the utility-first
-                      classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                      date-pickers.</p>
-                  <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
-                      you can think things through before committing to an actual design project.</p>
-                  <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
-                          Flow bite</a>. It comes with the most commonly used UI components, such as buttons, navigation
-                      bars, cards, form elements, and more which are conveniently built with the utility classes from
-                      Tailwind CSS.</p>
-                  <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
-                      <figcaption>Digital art by Anonymous</figcaption>
-                  </figure>
-                  <h2>Getting started with Flow bite</h2>
-                  <p>First of all you need to understand how Flow bite works. This library is not another framework.
-                      Rather, it is a set of components based on Tailwind CSS that you can just copy-paste from the
-                      documentation.</p>
-                  <p>It also includes a JavaScript file that enables interactive components, such as modals, dropdowns,
-                      and date pickers which you can optionally include into your project via CDN or NPM.</p>
-                  <p>You can check out the <a href="https://flowbite.com/docs/getting-started/quickstart/">quickstart
-                          guide</a> to explore the elements by including the CDN files into your project. But if you want
-                      to build a project with Flow bite I recommend you to follow the build tools steps so that you can
-                      purge and minify the generated CSS.</p>
-                  <p>You'll also receive a lot of useful application UI, marketing UI, and e-commerce pages that can help
-                      you get started with your projects even faster. You can check out this <a
-                          href="https://flowbite.com/docs/components/tables/">comparison table</a> to better understand
-                      the differences between the open-source and pro version of Flow bite.</p>
-                  <h2>When does design come in handy?</h2>
-                  <p>While it might seem like extra work at a first glance, here are some key moments in which prototyping
-                      will come in handy:</p>
-                  <ol>
-                      <li><strong>Usability testing</strong>. Does your user know how to exit out of screens? Can they
-                          follow your intended user journey and buy something from the site you’ve designed? By running a
-                          usability test, you’ll be able to see how users will interact with your design once it’s live;
-                      </li>
-                      <li><strong>Involving stakeholders</strong>. Need to check if your GDPR consent boxes are displaying
-                          properly? Pass your prototype to your data protection team, and they can test it for real;</li>
-                      <li><strong>Impressing a client</strong>. Prototypes can help explain or even sell your idea by
-                          providing your client with a hands-on experience;</li>
-                      <li><strong>Communicating your vision</strong>. By using an interactive medium to preview and test
-                          design elements, designers and developers can understand each other — and the project — better.
-                      </li>
-                  </ol>
-                  <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
-                  <section class="not-format">
-                      <div class="flex justify-between items-center mb-6">
-                          <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{ post.comment_set.count }})</h2>
-                      </div>
-                      <form method="POST" class="mb-6">
-                          {% csrf_token %}
-                          <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                              <label for="body" class="sr-only">Your comment</label>
-                              {{ form.body }}
-                          </div>
-                          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Comment</button>
-                      </form>
-
-                      {% for comment in post.comment_set.all %}
-                        <article class="p-6 mb-6 text-base bg-white ring-2 ring-gray-300 dark:ring-gray-500 rounded-lg dark:bg-gray-900">
-                          <footer class="flex justify-between items-center mb-2">
-                              <div class="flex items-center">
-                                  <a href="#" class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
-                                          class="mr-2 w-6 h-6 rounded-full"
-                                          src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                          alt="Michael Gogh">{{ comment.user.username }}</a>
-                                  <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                                          title="February 8th, 2022">{{ comment.created|date }}</time></p>
+                          <form method="POST" class="mb-6">
+                              {% csrf_token %}
+                              <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                                  <label for="body" class="sr-only">Your comment</label>
+                                  {{ form.body }}
                               </div>
-                              <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                                  class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                  type="button">
-                                  <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                      </path>
-                                  </svg>
-                                  <span class="sr-only">Comment settings</span>
-                              </button>
-                              <!-- Dropdown menu -->
-                              <div id="dropdownComment1"
-                                  class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                  <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                      aria-labelledby="dropdownMenuIconHorizontalButton">
-                                      <li>
-                                          <a href="#"
-                                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                                      </li>
-                                      <li>
-                                          <a href="#"
-                                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                                      </li>
-                                      <li>
-                                          <a href="#"
-                                              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </footer>
-                          <p>{{ comment.body }}</p>
-                          <div class="flex items-center mt-4 space-x-4 mb-5">
-                              <button type="button"
-                                  class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                  <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                                  Reply
-                              </button>
-                          </div>
-                            {% for recom in comment.recom %}
-                                <article class="p-6 mb-6 ml-6 lg:ml-12 ring-2 ring-gray-300 dark:ring-gray-500 text-base bg-white rounded-lg dark:bg-gray-900">
+                              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Comment</button>
+                          </form>
+
+                          {% for comment in post.comment_set.all %}
+                            <article class="p-6 mb-6 text-base bg-white ring-2 ring-gray-300 dark:ring-gray-500 rounded-lg dark:bg-gray-900">
                               <footer class="flex justify-between items-center mb-2">
                                   <div class="flex items-center">
-                                      <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
+                                      <a href="#" class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
                                               class="mr-2 w-6 h-6 rounded-full"
-                                              src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                              alt="Jes Leos">Jes Leos</p>
-                                      <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-12"
-                                              title="February 12th, 2022">Feb. 12, 2022</time></p>
+                                              src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                                              alt="Michael Gogh">{{ comment.user.username }}</a>
+                                      <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
+                                              title="February 8th, 2022">{{ comment.created|date }}</time></p>
                                   </div>
-                                  <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2"
+                                  <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
                                       class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                       type="button">
-                                      <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                           xmlns="http://www.w3.org/2000/svg">
                                           <path
                                               d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
@@ -168,7 +149,7 @@
                                       <span class="sr-only">Comment settings</span>
                                   </button>
                                   <!-- Dropdown menu -->
-                                  <div id="dropdownComment2"
+                                  <div id="dropdownComment1"
                                       class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                       <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
                                           aria-labelledby="dropdownMenuIconHorizontalButton">
@@ -187,22 +168,90 @@
                                       </ul>
                                   </div>
                               </footer>
-                              <p>Much appreciated! Glad you liked it ☺️</p>
-                              <div class="flex items-center mt-4 space-x-4">
+                              <p>{{ comment.body }}</p>
+                              <div class="flex items-center mt-4 space-x-4 mb-5">
                                   <button type="button"
                                       class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
-                                      <svg aria-hidden="true" class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                      <svg class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                                       Reply
                                   </button>
                               </div>
-                          </article>
-                            {% endfor %}
-                        </article>
-                      {% endfor %}
+                                {% for recom in comment.recom %}
+                                    <article class="p-6 mb-6 ml-6 lg:ml-12 ring-2 ring-gray-300 dark:ring-gray-500 text-base bg-white rounded-lg dark:bg-gray-900">
+                                  <footer class="flex justify-between items-center mb-2">
+                                      <div class="flex items-center">
+                                          <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
+                                                  class="mr-2 w-6 h-6 rounded-full"
+                                                  src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                                  alt="Jes Leos">Jes Leos</p>
+                                          <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-12"
+                                                  title="February 12th, 2022">Feb. 12, 2022</time></p>
+                                      </div>
+                                      <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2"
+                                          class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                          type="button">
+                                          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                              <path
+                                                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                              </path>
+                                          </svg>
+                                          <span class="sr-only">Comment settings</span>
+                                      </button>
+                                      <!-- Dropdown menu -->
+                                      <div id="dropdownComment2"
+                                          class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                              aria-labelledby="dropdownMenuIconHorizontalButton">
+                                              <li>
+                                                  <a href="#"
+                                                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#"
+                                                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#"
+                                                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </footer>
+                                  <p>Much appreciated! Glad you liked it ☺️</p>
+                                  <div class="flex items-center mt-4 space-x-4">
+                                      <button type="button"
+                                          class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400">
+                                          <svg class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                          Reply
+                                      </button>
+                                  </div>
+                              </article>
+                                {% endfor %}
+                            </article>
+                          {% endfor %}
 
-                  </section>
-              </div>
-          </article>
-      </div>
-    </main>
+                      </section>
+                  </div>
+              </article>
+          </div>
+        </main>
+        <main class="bg-white-100 col-span-3 dark:text-gray-400 dark:bg-gray-900">
+          <div class="flex sticky top-2 sm: justify-between mx-auto max-w-screen-xl ">
+              <article class="bg-white mx-auto rounded-lg w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                  <div class="px-8">
+                      <p class="lead">Flow bite is an open-source library of UI components built with the utility-first
+                          classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
+                          date-pickers.</p>
+                      <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
+                          you can think things through before committing to an actual design project.</p>
+                      <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
+                              Flow bite</a>. It comes with the most commonly used UI components, such as buttons, navigation
+                          bars, cards, form elements, and more which are conveniently built with the utility classes from
+                          Tailwind CSS.</p>
+                  </div>
+              </article>
+          </div>
+        </main>
+     </div>
 {% endblock %}
