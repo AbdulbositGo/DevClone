@@ -68,30 +68,33 @@ class ProfileView(View):
         profile = get_object_or_404(Profile, username=username)
         posts = profile.post_set.all()
         comments = profile.comment_set.all()
+        if request.user.is_authenticated:
+            following = request.user.following.all()
+            following_username = [user.following.username for user in following]
+        else:
+            following_username = []
         if profile:
             context = {
                 'profile': profile,
                 'posts': posts,
                 'comments': comments,
+                'following_username': following_username
             }
             return render(request, 'profile.html', context)
         return redirect(reverse('home'))
 
 
 class FollowToggle(LoginRequiredMixin, View):
-    def post(self, request, *args, **kwargs):
-        user_id = self.kwargs.get('userid')
-        following_user = get_object_or_404(Profile, id=user_id)
-        print(dir(request.user.followers.filter(follower_id=following_user.id)))
-        print(request.user.following.all())
-        if request.followers.filter(follwing=following_user).exists():
+    def post(self, request, username, *args, **kwargs):
+        following_user = get_object_or_404(Profile, username=username)
+        if request.user.following.filter(following=following_user).exists():
             follow_obj = Follow.objects.get(follower=request.user, following=following_user)
             follow_obj.delete()
         else:
             follow_obj = Follow(follower=request.user, following=following_user)
             follow_obj.save()
 
-        return redirect('profile', user_id=user_id)
+        return redirect('profile', username=following_user.username)
 
 
 class SettingsView(LoginRequiredMixin, View):

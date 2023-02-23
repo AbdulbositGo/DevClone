@@ -11,5 +11,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('settings/', SettingsView.as_view(), name='settings'),
     path('<str:username>/', ProfileView.as_view(), name='profile'),
-    path('follow/<int:iserid>/', FollowToggle.as_view(), name='follow_toggle'),
+    path('follow/<str:username>/', FollowToggle.as_view(), name='follow_toggle'),
 ]
