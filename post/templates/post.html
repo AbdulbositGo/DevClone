@@ -5,7 +5,7 @@
 
 {% block content %}
      <div class="max-w-5xl grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-1 mx-auto">
-        <main class="col-span-1 sm:col-span-1 dark:text-gray-400">
+        <aside class="col-span-1 dark:text-gray-400">
             <div class="sticky top-12 pt-10">
                 <article class="rounded-lg flex flex-col gap-8 items-center dark:format-invert">
                     <a class="flex flex-col items-center text-gray-900 font-medium dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
@@ -34,8 +34,8 @@
                     </a>
               </article>
           </div>
-        </main>
-        <main class="mx-2  col-span-8 sm:col-span-11 md:col-span-11 lg:col-span-8 xl:col-span-8 dark:text-gray-400 dark:bg-gray-900">
+        </aside>
+        <main class="col-span-8 sm:col-span-11 md:col-span-11 lg:col-span-8 xl:col-span-8 px-2 pb-10 dark:text-gray-400 dark:bg-gray-900">
           <div class="flex justify-between mx-auto max-w-screen-xl ">
               <article class="bg-white mx-auto rounded-lg w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                   <header class="mb-4 lg:mb-6 not-format">
@@ -236,22 +236,30 @@
               </article>
           </div>
         </main>
-        <main class="col-span-3 sm:hidden md:hidden lg:col-span-3 xl:col-span-3 dark:text-gray-400 dark:bg-gray-900">
+        <aside class="col-span-3 sm:hidden md:hidden lg:block lg:col-span-3 xl:col-span-3 dark:text-gray-400 dark:bg-gray-900">
           <div class="flex sticky top-2 sm: justify-between mx-auto max-w-screen-xl ">
-              <article class="bg-white mx-auto rounded-lg w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-                  <div class="px-8">
-                      <p class="lead">Flow bite is an open-source library of UI components built with the utility-first
-                          classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                          date-pickers.</p>
-                      <p>Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way,
-                          you can think things through before committing to an actual design project.</p>
-                      <p>But then I found a <a href="https://flowbite.com">component library based on Tailwind CSS called
-                              Flow bite</a>. It comes with the most commonly used UI components, such as buttons, navigation
-                          bars, cards, form elements, and more which are conveniently built with the utility classes from
-                          Tailwind CSS.</p>
-                  </div>
-              </article>
+            <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex justify-end rounded-t-lg bg-black h-5 mb-2">
+                </div>
+                <div class="flex flex-col items-center pb-6">
+                    <img class="w-20 relative h-20 mb-2 rounded-full shadow-lg" src="{{ post.profile.image.url }}" alt="Bonnie image"/>
+                    <a href="{% url 'profile' post.profile.username %}" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">@{{ post.profile.username }}</a>
+                    {% if post.profile == request.user %}
+                        <div class="mt-4 w-full px-12 flex justify-center">
+                            <a href="{% url 'settings' %}" class="w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Settings</a>
+                        </div>
+                    {% else %}
+                        <p class="text-md text-gray-900 dark:text-white">{{ post.profile.basic.bio }}</p>
+                        <div class="mt-4">
+                            <form action="{% url 'follow_toggle' post.profile.username %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{% if post.profile.username in following_username %}Unfollow{% else %}Follow{% endif %}</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
           </div>
-        </main>
+        </aside>
      </div>
 {% endblock %}
