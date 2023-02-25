@@ -11,18 +11,22 @@ Reading List
             {% if reading_list %}
                 {% for post in reading_list %}
                     <div class="relative ring-gray-300 ring-1 overflow-hidden mb-3 bg-white rounded-lg dark:bg-gray-800">
-                      <nav class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0" aria-label="Table navigation">
-                          <div class="flex flex-col items-start">
-                            <a href="{% url 'post' post.post.profile.username post.id %}" class="text-md font-bold text-blue-700 dark:text-gray-400">{{ post.post.title }}</a>
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                {% for tag in post.post.tags.all %}
-                                    <a href="" class="text-sm mr-3 text-{{ tag.get_color_display }}-600 dark:text-{{ tag.get_color_display }}-500 font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"># {{ tag.name }}</a>
-                                {% endfor %}
-                            </span>
-                          </div>
-                          <div class="flex flex-col gap-2">
-                            <a href="" class="text-ms font-normal hover:text-blue-700 text-gray-500 dark:text-gray-400">Edite</a>
-                            <a href="" class="text-sm font-normal hover:text-blue-700 text-gray-500 dark:text-gray-400">Delete</a>
+                      <nav class="p-4" aria-label="Table navigation">
+                          <div class="flex flex-row gap1">
+                              <img class="w-10 h-10 rounded-full mr-2" src="{{ post.post.profile.image.url }}" alt="Post user image">
+                              <div class="flex flex-col items-start">
+                                <a href="{% url 'post' post.post.profile.username post.id %}" class="text-md font-bold text-blue-700 dark:text-gray-400">{{ post.post.title }}</a>
+                                <div>
+                                    <a href="{% url 'profile' post.post.profile.username %}" class="text-sm text-gray-600 dark:text-gray-500 font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline">@{{ post.post.profile.username }}
+                                    </a>
+                                    <span class="text-xs font-normal text-gray-500 dark:text-gray-400">
+                                        created at {{ post.post.created|timesince }}
+                                    </span>
+                                    {% for tag in post.post.tags.all %}
+                                        <a href="" class="text-xs ml-3 text-{{ tag.get_color_display }}-600 dark:text-{{ tag.get_color_display }}-500 font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"># {{ tag.name }}</a>
+                                    {% endfor %}
+                                </div>
+                              </div>
                           </div>
                       </nav>
                     </div>
