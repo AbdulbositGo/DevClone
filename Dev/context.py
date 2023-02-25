@@ -1,5 +1,5 @@
 from post.models import Post
-from tag.models import Tag, FollowingTags
+from tag.models import FollowingTags
 from users.models import Follow
 
 
