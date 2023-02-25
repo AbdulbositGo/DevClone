@@ -47,3 +47,6 @@ class ReadingList(models.Model):
 
     def __str__(self):
         return f'{self.profile.username}{self.post.title[:20]}'
+
+    class Meta:
+        unique_together = ('profile', 'post')

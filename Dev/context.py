@@ -12,7 +12,8 @@ def dashboard_count_info(request):
             'following_tag_count': FollowingTags.objects.filter(profile=request.user).count(),
             'following_count': Follow.objects.filter(follower=request.user).count(),
             'follower_count': Follow.objects.filter(following=request.user).count(),
-            'following_username': following_username
+            'following_username': following_username,
+            'reading_list_count': request.user.readinglist_set.count()
         }
         return context
     return {}

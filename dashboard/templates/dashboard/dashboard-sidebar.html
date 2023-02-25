@@ -1,4 +1,4 @@
-<div class="h-fit xl:col-span-2 2xl:col-span-2 dark:bg-gray-900">
+<div class="h-fit lg:col-span-2 xl:col-span-2 2xl:col-span-2 lg:block xl:block 2xl:block dark:bg-gray-900">
     <ul class="space-y-2 text-sm font-medium text-gray-900 border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
         <li>
             <a href="{% url 'dashboard:posts' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-gray-700">
@@ -27,7 +27,7 @@
         <li>
             <a href="{% url 'dashboard:reading-list' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-blue-100 dark:hover:bg-gray-700">
                <span class="flex-1 ml-3 whitespace-nowrap">Reading List</span>
-               <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-gray-900 bg-gray-300 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ dashboard_count_info }}</span>
+               <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-gray-900 bg-gray-300 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ reading_list_count }}</span>
             </a>
          </li>
     </ul>

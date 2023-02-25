@@ -28,14 +28,26 @@ class DashboardFollowingTagsView(View):
 
 class DashboardFollowersView(View):
     def get(self, request):
-        return render(request, 'dashboard/followers.html')
+        followers = request.user.followers.all()
+        context = {
+            'followers': followers
+        }
+        return render(request, 'dashboard/followers.html', context)
 
 
 class DashboardFollowingUsersView(View):
     def get(self, request):
-        return render(request, 'dashboard/following-users.html')
+        following = request.user.following.all()
+        context = {
+           'following': following
+        }
+        return render(request, 'dashboard/following-users.html', context)
 
 
 class DashboardReadingListView(View):
     def get(self, request):
-        return render(request, 'dashboard/reading-list.html')
+        reading_list = request.user.readinglist_set.all()
+        context = {
+            'reading_list': reading_list
+        }
+        return render(request, 'dashboard/reading-list.html', context)
