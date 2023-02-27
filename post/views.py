@@ -31,8 +31,8 @@ class PostView(View):
         }
         return render(request, 'post.html', context)
 
-    def post(self, request, pk):
-        if request.user.is_authunticated:
+    def post(self, request, pk, username):
+        if request.user.is_authenticated:
             form = CommentModelForm(data=request.POST or None)
             post_obj = Post.objects.get(pk=pk)
             profile = Profile.objects.get(username=request.user.username)
