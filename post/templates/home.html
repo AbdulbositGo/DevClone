@@ -149,14 +149,15 @@
                                 <div class="">
                                     <div class="flex items-center">
                                         <div class="flex items-center">
-                                            <img class="object-cover h-10 w-10 rounded-full" src="{{ post.profile.image.url }}" alt="Avatar">
-
+                                            <a href="{% url 'profile' post.profile.username %}">
+                                                <img class="object-cover h-10 w-10 rounded-full" src="{{ post.profile.image.url }}" alt="Avatar">
+                                            </a>
                                             <button data-popover-target="popover-{{ post.id }}-profile" type="button" data-popover-placement="bottom" class="p-1 ml-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-xl hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{ post.profile.username }}</button>
                                             <div data-popover id="popover-{{ post.id }}-profile" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600">
                                                 <div class="p-3">
                                                     <div class="flex items-center justify-between mb-2">
                                                         <a href="{% url 'profile' post.profile.username %}">
-                                                            <img class="w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="Jese Leos">
+                                                            <img class="w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="{{ post.profile.first_name }}">
                                                         </a>
                                                         <div>
                                                             <a href="{% url 'follow_toggle' post.profile.username %}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Follow</a>
@@ -171,14 +172,14 @@
                                                     <p class="mb-4 text-sm font-light">{{ post.profile.basic.bio }}</p>
                                                     <ul class="flex text-sm font-light">
                                                         <li class="mr-2">
-                                                            <p class="hover:underline">
-                                                                <span class="font-semibold text-gray-900 dark:text-white">799</span>
+                                                            <p>
+                                                                <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.following.all.count }}</span>
                                                                 <span>Following</span>
                                                             </p>
                                                         </li>
                                                         <li>
-                                                            <p class="hover:underline">
-                                                                <span class="font-semibold text-gray-900 dark:text-white">3,758</span>
+                                                            <p>
+                                                                <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.followers.all.count }}</span>
                                                                 <span>Followers</span>
                                                             </p>
                                                         </li>
