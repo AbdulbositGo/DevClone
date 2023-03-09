@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-    <div class="max-w-5xl m-auto dark:bg-gray-900">
-        <nav class="flex px-2 py-3 md:hidden text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+    <div class="max-w-5xl m-auto dark:bg-black">
+        <nav class="flex px-2 py-4 md:hidden text-gray-700 bg-gray-50 dark:bg-black dark:border-gray-700" aria-label="Breadcrumb">
             <div class="text-center">
                 <button class="text-white hover:bg-gray-300 focus:ring-4 font-medium rounded-lg text-sm p-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a310wjwcd8d9cqish3pmt71jpuqljsqo" class="crayons-icon"><title id="a310wjwcd8d9cqish3pmt71jpuqljsqo">Navigation menu</title>
@@ -15,14 +15,15 @@
                 <li class="inline-flex items-center">
                     <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"><svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
                         Home
-                      </a>
+                    </a>
                 </li>
             </ol>
         </nav>
+
         <div class="w-full grid grid-cols-1 md:grid-cols-7 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-5 gap-1">
-            <div class="h-fit hidden md:block rounded-lg md:col-span-2 lg:col-span-1 xl:col-span-1 2xl:col-span-1 py-2 dark:bg-gray-900">
+            <div class="h-fit hidden md:block rounded-lg md:col-span-2 lg:col-span-1 xl:col-span-1 2xl:col-span-1 dark:bg-black">
                 <nav class="sm:flex sm:flex-row sm:justify-center md:flex-col">
-                    <a href="/" class="flex items-center px-2 py-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+                    <a href="/" class="flex items-center px-2 py-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-purple-700 dark:hover:text-gray-200 hover:text-gray-700">
                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="24" height="24">
                             <g class="nc-icon-wrapper">
                                 <path fill="#A0041E" d="M13.344 18.702h-2a.5.5 0 01-.5-.5v-7a.5.5 0 01.5-.5h2a.5.5 0 01.5.5v7a.5.5 0 01-.5.5z"></path>
@@ -37,7 +38,7 @@
                         </svg>
                         <span class="mx-2 font-medium">Home</span>
                     </a>
-                    <a class="flex items-center px-2 py-2 mt-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" href="{% url 'tags' %}">
+                    <a class="flex items-center px-2 py-2 mt-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-purple-700 dark:hover:text-gray-200 hover:text-gray-700" href="{% url 'tags' %}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="24" height="24">
                             <g class="nc-icon-wrapper">
                                 <path fill="#FFD983" d="M36.017 24.181L21.345 9.746C20.687 9.087 19.823 9 18.96 9H8.883C7.029 9 6 10.029 6 11.883v10.082c0 .861.089 1.723.746 2.38L21.3 39.017a3.287 3.287 0 004.688 0l10.059-10.088c1.31-1.312 1.28-3.438-.03-4.748zm-23.596-8.76a1.497 1.497 0 11-2.118-2.117 1.497 1.497 0 012.118 2.117z"></path>
@@ -47,7 +48,7 @@
                         </svg>
                         <span class="mx-2 font-medium">Tags</span>
                     </a>
-                    <a class="flex items-center px-2 py-2 mt-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700" href="#">
+                    <a class="flex items-center px-2 py-2 mt-2 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-purple-700 dark:hover:text-gray-200 hover:text-gray-700" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="24" height="24">
                             <g class="nc-icon-wrapper">
                                 <path fill="#67757F" d="M39 24c0 2.209-1.791 2-4 2H9c-2.209 0-4 .209-4-2l2-12c.125-1.917 1.791-4 4-4h22c2.209 0 3.791 2.208 4 4l2 12z"></path>
@@ -119,19 +120,19 @@
                </div>
             </div>
 
-            <div class="rounded-lg sm:col-span-5 md:col-span-5 lg:col-span-3 xl:col-span-3 2xl:col-span-3 dark:bg-gray-900">
-                <nav class="bg-gray-100 dark:bg-gray-900 mb-4">
+            <div class="rounded-lg sm:col-span-5 md:col-span-5 lg:col-span-3 xl:col-span-3 2xl:col-span-3 dark:bg-black">
+                <nav class="bg-gray-100 dark:bg-black mb-4">
                     <div class="max-w-screen-xl px-4 py-2 mx-auto">
                         <div class="flex items-center">
-                            <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+                            <ul class="flex flex-row mt-0 mr-6 text-lg space-x-8 text-sm font-medium">
                                 <li>
-                                    <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                                    <a href="" class="text-gray-900 dark:text-white hover:text-purple-700">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Company</a>
+                                    <a href="" class="text-gray-900 dark:text-white hover:text-purple-700">Company</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Team</a>
+                                    <a href="" class="text-gray-900 dark:text-white hover:text-purple-700">Team</a>
                                 </li>
                             </ul>
                         </div>
@@ -139,87 +140,82 @@
                 </nav>
                 {% if posts.exists %}
                     {% for post in posts %}
-                        <div class="max-w-full overflow-hidden mb-3 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div class="max-w-full overflow-hidden mb-3 bg-white rounded-lg shadow-md dark:bg-zinc-900 dark:ring-1 dark:ring-zinc-700">
                             <a href="{% url 'post' post.profile.username post.pk %}">
                                 {% if post.image %}
                                     <img class="object-cover w-full h-64" src="{{ post.image.url }}" alt="Article">
                                 {% endif %}
                             </a>
                             <div class="p-6 pb-2">
-                                <div class="">
+                                <div class="flex items-center">
                                     <div class="flex items-center">
-                                        <div class="flex items-center">
-                                            <a href="{% url 'profile' post.profile.username %}">
-                                                <img class="object-cover h-10 w-10 rounded-full" src="{{ post.profile.image.url }}" alt="Avatar">
-                                            </a>
-                                            <button data-popover-target="popover-{{ post.id }}-profile" type="button" data-popover-placement="bottom" class="p-1 ml-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-xl hover:bg-gray-100 hover:text-blue-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{ post.profile.username }}</button>
-                                            <div data-popover id="popover-{{ post.id }}-profile" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600">
-                                                <div class="p-3">
-                                                    <div class="flex items-center justify-between mb-2">
-                                                        <a href="{% url 'profile' post.profile.username %}">
-                                                            <img class="w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="{{ post.profile.first_name }}">
-                                                        </a>
-                                                        <div>
-                                                            <a href="{% url 'follow_toggle' post.profile.username %}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Follow</a>
-                                                        </div>
+                                        <a href="{% url 'profile' post.profile.username %}">
+                                            <img class="object-cover h-10 w-10 rounded-full" src="{{ post.profile.image.url }}" alt="Avatar">
+                                        </a>
+                                        <button data-popover-target="popover-{{ post.id }}-profile" type="button" data-popover-placement="bottom" class="p-1 ml-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-xl hover:bg-gray-100 dark:hover:bg-zinc-900 hover:text-blue-700 focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-zinc-900 dark:text-gray-400 dark:hover:text-purple-700">{{ post.profile.username }}</button>
+                                        <div data-popover id="popover-{{ post.id }}-profile" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-zinc-900 dark:border-zinc-700">
+                                            <div class="p-3">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <a href="{% url 'profile' post.profile.username %}">
+                                                        <img class="w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="{{ post.profile.first_name }}">
+                                                    </a>
+                                                    <div>
+                                                        <a href="{% url 'follow_toggle' post.profile.username %}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-purple-700 dark:hover:bg-purple-800 focus:outline-none dark:focus:ring-purple-800">Follow</a>
                                                     </div>
-                                                    <p class="text-base font-semibold leading-none text-gray-900 dark:text-white">
-                                                        <a href="{% url 'profile' post.profile.username %}">{{ post.profile.first_name }}</a>
-                                                    </p>
-                                                    <p class="mb-3 text-sm font-normal">
-                                                        <a href="{% url 'profile' post.profile.username %}" class="hover:underline">{{ post.profile.username }}</a>
-                                                    </p>
-                                                    <p class="mb-4 text-sm font-light">{{ post.profile.basic.bio }}</p>
-                                                    <ul class="flex text-sm font-light">
-                                                        <li class="mr-2">
-                                                            <p>
-                                                                <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.following.all.count }}</span>
-                                                                <span>Following</span>
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <p>
-                                                                <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.followers.all.count }}</span>
-                                                                <span>Followers</span>
-                                                            </p>
-                                                        </li>
-                                                    </ul>
                                                 </div>
-                                                <div data-popper-arrow></div>
+                                                <p class="text-base font-semibold leading-none text-gray-900 dark:text-white">
+                                                    <a href="{% url 'profile' post.profile.username %}">{{ post.profile.first_name }}</a>
+                                                </p>
+                                                <p class="mb-3 text-sm font-normal">
+                                                    <a href="{% url 'profile' post.profile.username %}" class="hover:text-purple-700">{{ post.profile.username }}</a>
+                                                </p>
+                                                <p class="mb-4 text-sm font-light">{{ post.profile.basic.bio }}</p>
+                                                <ul class="flex text-sm font-light">
+                                                    <li class="mr-2">
+                                                        <p>
+                                                            <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.following.all.count }}</span>
+                                                            <span>Following</span>
+                                                        </p>
+                                                    </li>
+                                                    <li>
+                                                        <p>
+                                                            <span class="font-semibold text-gray-900 dark:text-white">{{ post.profile.followers.all.count }}</span>
+                                                            <span>Followers</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
                                             </div>
-
-
+                                            <div data-popper-arrow></div>
                                         </div>
-                                        <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">{{ post.created|timesince }} ago</span>
                                     </div>
+                                    <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">{{ post.created|timesince }} ago</span>
                                 </div>
+
                                 <div>
-                                    <a href="{% url 'post' post.profile.username post.pk %}" class="block mt-2 mx-10 mb-3 text-4xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">{{ post.title }}</a>
+                                    <a href="{% url 'post' post.profile.username post.pk %}" class="block mt-2 mx-10 mb-3 text-4xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:text-purple-700" tabindex="0" role="link">{{ post.title }}</a>
                                     <div class="mx-4">
                                         {% for tag in post.tags.all %}
                                             <a href="" class="text-sm ml-6 me-6 text-{{ tag.get_color_display }}-600 dark:text-{{ tag.get_color_display }}-500 font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"># {{ tag.name }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>
-
-                                <nav class="m-2 mx-5">
-                                    <a type="button" class="text-gray bg-gray hover:bg-blue-100 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</a>
-                                    <a type="button" class="text-gray bg-gray hover:bg-blue-100 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</a>
-                                </nav>
-
+                                <div class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0" aria-label="Table navigation">
+                                  <div class="flex flex-row items-start gap-1">
+                                    <a href="{% url 'post' post.profile.username post.id %}" class="text-md font-bold text-blue-700 dark:text-gray-400">@</a>
+                                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">#</span>
+                                  </div>
+                                  <div class="">
+                                    <a href="" class="text-ms font-normal hover:text-blue-700 text-gray-500 dark:text-gray-400">Edite</a>
+                                  </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
                 {% endif %}
             </div>
 
-            <div class="h-fit bg-white sm:hidden lg:block md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 rounded-lg p-2 py-2 dark:bg-gray-900">
-                <div class="text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <a class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">Profile</a>
-                    <a class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Settings</a>
-                    <a class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Messages</a>
-                    <a class="w-full px-4 py-2 rounded-b-lg">Download</a>
-                </div>
+            <div class="h-fit bg-white sm:hidden lg:block md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 rounded-lg p-2 py-2 dark:bg-zinc-900">
+
             </div>
         </div>
     </div>
