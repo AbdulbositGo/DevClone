@@ -5,35 +5,35 @@
 
 {% block content %}
      <div class="max-w-5xl grid grid-cols-12 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-2 mb-10 mx-auto">
-        <aside class="col-span-1 dark:text-gray-400">
+        <aside class="col-span-1">
             <div class="sticky top-12 pt-10">
-                <article class="rounded-lg flex flex-col gap-8 items-center dark:format-invert">
-                    <a class="flex flex-col items-center text-gray-900 font-medium dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
-                        <span class="hover:color-blue-700">
+                <div class="rounded-lg flex flex-col gap-8 items-center dark:format-invert">
+                    <a class="flex flex-col items-center text-black font-medium rounded-lg p-1 hover:text-white hover:bg-red-700 dark:text-gray-400">
+                        <span >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 19" fill="none" role="img" aria-hidden="true" class="crayons-icon">
-                                <path class="hover:text-blue-700" d="M17 11v3h3v2h-3.001L17 19h-2l-.001-3H12v-2h3v-3h2Zm1.243-9.243a6 6 0 0 1 .236 8.235l-1.42-1.418C18.39 7.05 18.32 4.66 16.827 3.17a4.001 4.001 0 0 0-5.49-.153l-1.335 1.198-1.336-1.197a3.999 3.999 0 0 0-5.494.154 4 4 0 0 0-.192 5.451l8.432 8.446L10 18.485 1.52 9.993A6 6 0 0 1 10 1.529a5.998 5.998 0 0 1 8.242.228h.001Z" fill="#dc2626"></path>
+                                <path d="M17 11v3h3v2h-3.001L17 19h-2l-.001-3H12v-2h3v-3h2Zm1.243-9.243a6 6 0 0 1 .236 8.235l-1.42-1.418C18.39 7.05 18.32 4.66 16.827 3.17a4.001 4.001 0 0 0-5.49-.153l-1.335 1.198-1.336-1.197a3.999 3.999 0 0 0-5.494.154 4 4 0 0 0-.192 5.451l8.432 8.446L10 18.485 1.52 9.993A6 6 0 0 1 10 1.529a5.998 5.998 0 0 1 8.242.228h.001Z" fill="white"></path>
                             </svg>
                         </span>
                         <span>9</span>
                     </a>
-                    <a class="flex  flex-col items-center text-gray-900 font-medium hover:text-gray-900 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
+                    <a class="flex flex-col items-center text-black font-medium rounded-lg p-1 hover:text-white hover:bg-yellow-700 dark:text-gray-400">
                         <span class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
-                                <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+                                <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z" fill="white"></path>
                             </svg>
                         </span>
                         <span>2</span>
                     </a>
-                    <a class="flex flex-col items-center text-gray-900 font-medium hover:text-gray-900 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-400">
+                    <a class="flex flex-col items-center text-black font-medium rounded-lg p-1 hover:text-white hover:bg-purple-700 dark:text-gray-400">
                         <span class="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
-                                <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+                                <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z" fill="white"></path>
                             </svg>
                         </span>
                         <span>4</span>
                     </a>
-              </article>
-          </div>
+              </div>
+            </div>
         </aside>
         <main class="col-span-8 rounded-lg sm:col-span-11 md:col-span-11 lg:col-span-8 xl:col-span-8 dark:bg-zinc-900">
             <div>
@@ -64,11 +64,12 @@
                     </div>
                     <div class="dark:text-white mt-10 font-mono text-xl">
                         {{ post.content }}
+                        {% lorem 5 %}
                     </div>
                 </div>
             </div>
         </main>
-        <aside class="col-span-3 sm:hidden md:hidden lg:block lg:col-span-3 xl:col-span-3 h-fit rounded-lg dark:bg-zinc-900">
+        <aside class="col-span-3 sm:hidden md:hidden lg:block lg:col-span-3  h-fit rounded-lg dark:bg-zinc-900">
             <div class="w-full bg-white border border-zinc-500 rounded-lg shadow dark:bg-zinc-900 dark:border-zinc-700">
                 <div class="rounded-t-lg bg-black h-6 mb-2">
                 </div>
@@ -77,12 +78,12 @@
                     <a href="{% url 'profile' post.profile.username %}" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">@{{ post.profile.username }}</a>
                     {% if post.profile == request.user %}
                         <div class="mt-4 w-full px-12 flex justify-center">
-                            <a href="{% url 'settings' %}" class="w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Settings</a>
+                            <a href="{% url 'settings' %}" class="w-full text-center text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2">Settings</a>
                         </div>
                     {% else %}
                         <p class="text-md text-gray-900 dark:text-white">{{ post.profile.basic.bio }}</p>
                         <div class="mt-4">
-                            <form action="{% url 'follow_toggle' post.profile.username %}" method="POST">
+                            <form action="{% url 'follow_toggle' post.profile.username %}"  method="POST">
                                 {% csrf_token %}
                                 <button type="submit" class="text-center text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2">{% if post.profile.username in following_username %}Unfollow{% else %}Follow{% endif %}</button>
                             </form>
