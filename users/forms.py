@@ -3,9 +3,9 @@ from django import forms
 
 from .models import Profile, Basic, Coding, Work
 
-text_input_class = 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 ' \
-                   'focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 ' \
-                   'dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+text_input_class = 'border border-gray-300 text-black font-medium text-sm rounded-lg w-full p-2.5 ' \
+                   'focus:ring-purple-700 focus:border-purple-700 dark:bg-black dark:border-zinc-700 ' \
+                   'dark:placeholder-gray-400 dark:hover:border-zinc-600 dark:text-white'
 
 
 class RegistrationForm(UserCreationForm):
@@ -36,16 +36,12 @@ class ProfileModelForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class': text_input_class}),
             'email': forms.EmailInput(attrs={'class': text_input_class}),
             'display_email': forms.CheckboxInput(attrs={
-                'class': 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 '
-                         'rounded focus:ring-blue-500 '
-                         'dark:focus:ring-blue-600 dark:ring-offset-gray-800 '
-                         'focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                'class': 'bg-gray-100 rounded focus:ring-purple-700 dark:border-zinc-700 dark:bg-black'
             }),
             'image': forms.FileInput(attrs={
-                'class': 'block w-full col-span-9 text-sm text-gray-900 border '
-                         'border-gray-300 rounded-lg cursor-pointer bg-gray-50 '
-                         'dark:text-gray-400 focus:outline-none dark:bg-gray-700 '
-                         'dark:border-gray-600 dark:placeholder-gray-400'
+                'class': 'col-span-9 text-sm text-black border border-gray-300 '
+                         'rounded-lg cursor-pointer focus:ring-purple-700 focus:border-purple-700 '
+                         'dark:text-zinc-600 dark:border-zinc-700 dark:bg-black'
             }),
         }
 

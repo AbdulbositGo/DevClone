@@ -156,9 +156,24 @@
 
             <nav class="mb-2 rounded-md bg-white dark:bg-zinc-900 rounded-lg">
                  <ul class="text-md font-medium text-gray-900 rounded-lg border-gray-200 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white">
-                     <li class="w-full p-3 dark:border-gray-600">{{ posts.count }} posts published</li>
-                     <li class="w-full p-3 dark:border-gray-600">{{ comments.count }} comments written</li>
-                     <li class="w-full p-3 dark:border-gray-600">0 tags followed</li>
+                     <li class="w-full p-3 dark:border-gray-600">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="ac87mmhln6e5vvyjcm3lp3xdl3o45bo9" class="inline mr-1">
+                             <path d="M19 22H5a3 3 0 01-3-3V3a1 1 0 011-1h14a1 1 0 011 1v12h4v4a3 3 0 01-3 3zm-1-5v2a1 1 0 002 0v-2h-2zm-2 3V4H4v15a1 1 0 001 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z" fill="gray"></path>
+                         </svg>
+                         {{ posts.count }} posts published
+                     </li>
+                     <li class="w-full p-3 dark:border-gray-600">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="af73p2opfq4ugs1qs57jxwb3oxpskeic" class="inline mr-1">
+                            <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z" fill="gray"></path>
+                        </svg>
+                         {{ comments.count }} comments written
+                     </li>
+                     <li class="w-full p-3 dark:border-gray-600">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="as6s5m7nypnlne12c7nou15e6br9lo52" class="inline mr-1">
+                            <path d="M7.784 14l.42-4H4V8h4.415l.525-5h2.011l-.525 5h3.989l.525-5h2.011l-.525 5H20v2h-3.784l-.42 4H20v2h-4.415l-.525 5h-2.011l.525-5H9.585l-.525 5H7.049l.525-5H4v-2h3.784zm2.011 0h3.99l.42-4h-3.99l-.42 4z" fill="gray"></path>
+                        </svg>
+                         0 tags followed
+                     </li>
                  </ul>
             </nav>
         </div>
