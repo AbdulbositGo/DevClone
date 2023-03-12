@@ -3,7 +3,7 @@ from django import forms
 
 from .models import Profile, Basic, Coding, Work
 
-text_input_class = 'border border-gray-300 text-black font-medium text-sm rounded-lg w-full p-2.5 ' \
+text_input_class = 'border border-gray-300 text-black font-semibold text-sm rounded-lg w-full p-2.5 ' \
                    'focus:ring-purple-700 focus:border-purple-700 dark:bg-black dark:border-zinc-700 ' \
                    'dark:placeholder-gray-400 dark:hover:border-zinc-600 dark:text-white'
 
