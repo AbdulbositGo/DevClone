@@ -3,30 +3,25 @@ from django import forms
 from post.models import Post, Tag, Comment
 
 
+text_input_class = 'border border-gray-300 text-black font-semibold text-sm rounded-lg w-full p-2.5 ' \
+                   'focus:ring-purple-700 focus:border-purple-700 dark:bg-black dark:border-zinc-700 ' \
+                   'dark:placeholder-gray-400 dark:hover:border-zinc-600 dark:text-white'
+
+
 class PostModelForm(forms.ModelForm):
     image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'hidden'}))
     tags = forms.ModelMultipleChoiceField(
         queryset=Tag.objects.all(),
         widget=forms.SelectMultiple(attrs={
-            'class': 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 '
-                     'focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 '
-                     'dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
+            'class': text_input_class,
             'required': False
         }))
     content = forms.CharField(widget=forms.Textarea(attrs={
-        'class': 'dark:bg-gray-700 mt-1  w-full rounded-md border-gray-300 shadow-sm pl-3'
-                 'focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 '
-                 'dark:placeholder-gray-400 p-3 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
-        'placeholder': 'Write your post content',
-        'rows': 6,
-        'id': 'content'}))
+        'class': text_input_class, 'placeholder': 'Write your post content','rows': 6,'id': 'content'
+    }))
 
     title = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'dark:bg-gray-700 mt-1 block w-full rounded-md '
-                 'border-gray-300 dark:text-white '
-                 'shadow-sm focus:border-indigo-500 '
-                 'focus:ring-indigo-500 sm:text-sm',
-        'placeholder': 'Write a title...'
+        'class': text_input_class, 'placeholder': 'Write a title...'
     }))
 
     class Meta:
