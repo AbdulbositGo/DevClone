@@ -8,7 +8,6 @@ urlpatterns = [
     path('', include('post.urls')),
     path('', include('tag.urls')),
     path('', include('users.urls')),
-    path('readin-list', include('reading_list.urls')),
     path('dashboard/', include('dashboard.urls')),
 ]
 
