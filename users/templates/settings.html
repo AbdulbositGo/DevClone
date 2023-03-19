@@ -5,7 +5,7 @@ Settings-for-{{ profile.username }}
 {% endblock %}
 
 {% block content %}
-    <div class="px-4 max-w-4xl m-auto">
+    <div class="px-4 max-w-screen-lg m-auto">
         <p class="px-4 py-6 font-extrabold text-4xl text-black dark:text-white">Settings for
             <a href="{% url 'profile' profile.username %}" class="font-extrabold text-purple-700 hover:underline">@{{ profile.username }}</a>
         </p>

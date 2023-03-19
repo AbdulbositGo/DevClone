@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="max-w-5xl m-auto dark:bg-black">
+    <div class="max-w-screen-xl m-auto dark:bg-black">
         <nav class="flex px-2 py-4 md:hidden text-gray-700 bg-gray-50 dark:bg-black dark:border-gray-700" aria-label="Breadcrumb">
             <div class="text-center">
                 <button class="text-white hover:bg-gray-300 focus:ring-4 font-medium rounded-lg text-sm p-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
@@ -158,7 +158,7 @@
                                             <div class="p-3">
                                                 <div class="flex items-center justify-between mb-2">
                                                     <a href="{% url 'profile' post.profile.username %}">
-                                                        <img class="w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="{{ post.profile.first_name }}">
+                                                        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.profile.image.url }}" alt="{{ post.profile.first_name }}">
                                                     </a>
                                                     <div>
                                                         <a href="{% url 'follow_toggle' post.profile.username %}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-purple-700 dark:hover:bg-purple-800 focus:outline-none dark:focus:ring-purple-800">Follow</a>

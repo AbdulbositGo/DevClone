@@ -5,9 +5,6 @@ from users.models import Profile
 from tag.models import Tag
 
 
-# Create your models here.
-
-
 class Post(models.Model):
     class Meta:
         ordering = ['-created', 'updated']

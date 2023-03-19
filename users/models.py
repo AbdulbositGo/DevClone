@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class Profile(AbstractUser):
     display_email = models.BooleanField(default=False)
-    image = models.ImageField(default="default_user_image.webp", upload_to='user_images')
+    image = models.ImageField(default="no_user.png", upload_to='user_images')
 
     def __str__(self):
         return self.username

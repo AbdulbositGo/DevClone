@@ -34,7 +34,7 @@ class PostModelForm(forms.ModelForm):
 
 
 class CommentModelForm(forms.ModelForm):
-    body = forms.CharField(widget=forms.Textarea(attrs={
+    body = forms.CharField(required=True, label='comment', widget=forms.Textarea(attrs={
         'class': 'px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 dark:text-white dark:placeholder-gray-400 '
                  'dark:bg-gray-800',
         'rows': 6,

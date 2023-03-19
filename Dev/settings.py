@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'tag.apps.TagConfig',
     'users.apps.UsersConfig',
     'dashboard.apps.DashboardConfig',
+    'reading_list.apps.ReadingListConfig',
 ]
 
 MIDDLEWARE = [
