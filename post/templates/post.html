@@ -35,8 +35,8 @@
               </div>
             </div>
         </aside>
-        <main class="col-span-8 rounded-lg sm:col-span-11 md:col-span-11 lg:col-span-8 xl:col-span-8 dark:bg-zinc-900">
-            <div class="bg-white rounded-lg">
+        <main class="col-span-11 rounded-lg border border-neutral-800 lg:col-span-8 dark:bg-neutral-900">
+            <div class="bg-white dark:bg-neutral-900 rounded-lg">
                 {% if post.image %}
                     <img class="h-80 object-cover w-full rounded-t-lg" src="{{ post.image.url }}" alt="image description">
                 {% endif %}
@@ -66,20 +66,69 @@
                         {{ post.content }}
                         {% lorem 5 %}
                     </div>
-                    <div class="dark:text-white border p-2 rounded-lg mt-10 font-mono text-xl">
-                        {{ form }}
+                    <div class="dark:text-white p-2 border-t-2 border-neutral-800 mt-10 font-mono text-xl">
+                        <form method="post">
+                            {% csrf_token %}
+                                {{ form }}
+                            <button type="submit" class="text-purple-700 border border-purple-700 hover:bg-purple-700 hover:text-white font-medium rounded-lg text-sm px-4 py-2 text-center mr-2">Submit</button>
+                        </form>
                     </div>
-                    <div class="dark:text-white border p-2 rounded-lg mt-10 font-mono text-xl">
+                    <div class="dark:text-white p-2 mt-5">
+                        {% for comment in comments %}
+                            <article class="p-4  mb-6 text-base bg-white rounded-lg border dark:border-neutral-700 dark:bg-neutral-900">
+                                <footer class="flex justify-between items-center mb-2">
+                                    <div class="flex items-center">
+                                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                                            <img class="mr-2 w-6 rounded-full dark:bg-white" src="{{ comment.profile.image.url }}" alt="{{ comment.profile.username }}">
+                                            {{ comment.profile.username }}
+                                        </p>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                                            <time>{{ comment.created|timesince }} ago.</time>
+                                        </p>
+                                    </div>
+                                    <button id="dropdownComment{{ comment.id }}Button" data-dropdown-toggle="dropdownComment{{ comment.id }}"
+                                        class="inline-flex items-center p-1 font-medium text-center text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800"
+                                        type="button">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdownComment{{ comment.id }}"
+                                        class="hidden z-10 w-36 bg-white rounded border divide-y divide-gray-100 shadow dark:border-neutral-800 dark:bg-neutral-900">
+                                        <ul class="p-1 text-sm text-gray-700 dark:text-gray-200"
+                                            aria-labelledby="dropdownMenuIconHorizontalButton">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 rounded dark:hover:bg-purple-700 dark:hover:text-white">Edit</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 rounded dark:hover:bg-purple-700 dark:hover:text-white">Remove</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 rounded dark:hover:bg-purple-700 dark:hover:text-white">Report</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </footer>
+                                <p class="text-gray-500 dark:text-gray-400">
+                                    {{ comment.body }}
+                                </p>
+
+                            </article>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </main>
-        <aside class="col-span-3 sm:hidden md:hidden lg:block lg:col-span-3  h-fit rounded-lg dark:bg-zinc-900">
-            <div class="w-full bg-white border border-zinc-500 rounded-lg shadow dark:bg-zinc-900 dark:border-zinc-700">
+        <aside class="col-span-3 hidden lg:block lg:col-span-3  h-fit rounded-lg dark:bg-neutral-900">
+            <div class="w-full bg-white border border-neutral-500 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-700">
                 <div class="rounded-t-lg bg-black h-6 mb-2">
                 </div>
                 <div class="flex flex-col items-center pb-6">
-                    <img class="w-20 h-20 relative mb-2 rounded-full shadow-lg" src="{{ post.profile.image.url }}" alt="Bonnie image"/>
+                    <img class="w-20 h-20 mb-2 rounded-full dark:bg-white" src="{{ post.profile.image.url }}" alt="Bonnie image"/>
                     <a href="{% url 'profile' post.profile.username %}" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">@{{ post.profile.username }}</a>
                     {% if post.profile == request.user %}
                         <div class="mt-4 w-full px-12 flex justify-center">

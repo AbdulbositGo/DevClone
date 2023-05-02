@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from post.forms import PostModelForm, CommentModelForm
-from post.models import Post
+from post.models import Post, Comment
 from users.models import Profile
 
 
@@ -12,7 +12,6 @@ from users.models import Profile
 class HomeView(View):
     def get(self, request):
         posts = Post.objects.all()
-
         context = {
             'posts': posts
         }
@@ -24,10 +23,12 @@ class PostView(View):
         post_obj = Post.objects.get(pk=pk)
         if post_obj is None:
             return redirect('/')
+        comments = Comment.objects.filter(post=post_obj)
         form = CommentModelForm()
         context = {
             'post': post_obj,
-            'form': form
+            'form': form,
+            'comments': comments
         }
         return render(request, 'post.html', context)
 
