@@ -7,24 +7,19 @@ Following Tags
 {% endblock %}
 
 {% block dashboard %}
-    <div class="rounded-lg sm:col-span-600 md:col-span-7 dark:bg-neutral-900">
+    <div class="rounded-lg sm:col-span-6 md:col-span-7">
         <div class="pb-6 rounded-lg">
             {% if following_tags %}
                 <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
                     {% for tag in following_tags %}
-                        <div class="rounded-lg h-52 bg-white">
+                        <div class="rounded-lg min-h-fit dark:bg-neutral-900">
                             <div class="h-4 bg-{{ tag.tag.get_color_display }}-500 rounded-t-lg w-full">
                             </div>
                             <div class="p-3">
-                                <a href="{% url 'tag' tag.tag.pk %}" class="text-xl p-2 my-2 font-bold dark:text-white hover:bg-{{ tag.get_color_display }}-200 hover:rounded">#{{ tag.tag.name }}</a>
+                                <a href="{% url 'tag' tag.tag.pk %}" class="text-xl p-2 my-2 font-bold dark:text-white hover:text-{{ tag.tag.get_color_display }}-500">#{{ tag.tag.name }}</a>
                                 {% if tag.tag.description %}
                                     <p class="my-2 m text-gray-500 dark:text-gray-400">{{ tag.tag.description }}</p>
                                 {% endif %}
-                                <div class="mt-4">
-                                    <a href="{% url 'following-tag' tag.tag.id %}" type="submit" class="text-center text-gray-900 bg-{{ tag.tag.get_color_display }}-500 hover:bg-{{ tag.tag.get_color_display }}-200 border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-{{ tag.tag.get_color_display }}-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                                        Unfollow
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     {% endfor %}

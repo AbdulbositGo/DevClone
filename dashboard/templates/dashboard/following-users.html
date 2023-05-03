@@ -7,24 +7,24 @@ Following Users
 {% endblock %}
 
 {% block dashboard %}
-    <div class="rounded-lg lg:col-span-7 xl:col-span-7 2xl:col-span-7 dark:bg-gray-900">
+    <div class="rounded-lg sm:col-span-6 md:col-span-7">
         <div class="pb-6">
              {% if following %}
                 <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4 md:space-y-0">
                     {% for user in following %}
-                        <div class="flex flex-col bg-white border rounded-lg items-center py-8">
-                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ user.following.image.url }}" alt="Bonnie image"/>
+                        <div class="flex flex-col bg-white border rounded-lg items-center py-8 dark:border-neutral-700 dark:bg-neutral-900">
+                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg dark:bg-white" src="{{ user.following.image.url }}" alt="Bonnie image"/>
                             {% if user.following.first_name or user.following.last_name %}
-
-                            {% endif %} <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ user.following.firs_name }} {{ user.following.last_name }}</h5>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">@{{ user.following.username }}</span>
+                                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ user.following.firs_name }} {{ user.following.last_name }}</h5>
+                            {% endif %}
+                            <a href="{% url 'profile' user.follower.username %}" class="text-sm font-medium text-gray-500 dark:text-gray-400">@{{ user.following.username }}</a>
                         </div>
                     {% endfor %}
                 </div>
              {% else %}
                 <div class="flex flex-col items-center h-100">
                     <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--XHE_XeFn--/c_imagga_scale,f_auto,fl_progressive,q_auto,w_300/https://dev-to-uploads.s3.amazonaws.com/i/y5767q6brm62skiyywvc.png" alt="no-post">
-                    <p class="mb-6">You don't follow any users...</p>
+                    <p class="mb-6 dark:text-neutral-600">You don't follow any users...</p>
                 </div>
             {% endif %}
         </div>
